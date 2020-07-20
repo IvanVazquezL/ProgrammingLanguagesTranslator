@@ -1,4 +1,5 @@
 from javaTranslator import javaProcessor
+from javascriptTranslator import javascriptProcessor
 
 sourceFile = input("Source File: ")
 targetLanguage = input("Target Language: ").lower()
@@ -6,6 +7,7 @@ targetLanguage = input("Target Language: ").lower()
 file = open(sourceFile, "r")
 #print(file.read())
 
+#We split the sourceFile in two, the name of the file and its type
 nameAndType = sourceFile.split(".")
 newFileName = nameAndType[0]
 typeFile = nameAndType[1]
@@ -22,6 +24,7 @@ elif typeFile == "cs":
 
 elif typeFile == "js":
     print("JavaScript")
+    javascriptProcessor(file,targetLanguage,newFileName)
 
 elif typeFile == "cpp":
     print("C++")
