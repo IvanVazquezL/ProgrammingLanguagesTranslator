@@ -13,6 +13,7 @@ def javascriptProcessor(file, targetLanguage, newFileName):
             elementChecker = line.split(" ")
             for word in elementChecker:
                     pythonLine = ""
+                    #print("**",word,"**")
                     if word == "function":
                         functionName = elementChecker[1].replace("{", ":")
                         functionBoiler = "def " + functionName
@@ -31,7 +32,8 @@ def javascriptProcessor(file, targetLanguage, newFileName):
                         returnLine = "  return "+elementChecker[indexWord+1].replace(";","")
                         newTargetFile.write(returnLine)
                     if word.find("alert") !=-1:
-                        printLine = word.replace("alert","  print")
+                        print("line",line)
+                        printLine = line.replace("alert","print")
                         finalPrint = printLine.replace(";","")
                         newTargetFile.write(finalPrint)
 

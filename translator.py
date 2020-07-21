@@ -1,5 +1,6 @@
 from javaTranslator import javaProcessor
 from javascriptTranslator import javascriptProcessor
+from pythonTranslator import pythonProcessor
 
 sourceFile = input("Source File: ")
 targetLanguage = input("Target Language: ").lower()
@@ -18,6 +19,7 @@ if typeFile == "java":
 
 elif typeFile == "py":
     print("Python")
+    pythonProcessor(file,targetLanguage,newFileName)
 
 elif typeFile == "cs":
     print("C#")
