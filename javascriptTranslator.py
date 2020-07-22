@@ -1,7 +1,7 @@
 from javascriptParser import parserFile
+from displayTranslation import displayTranslationFunction
 
-
-def javascriptProcessor(file, targetLanguage, newFileName):
+def javascriptProcessor(file, targetLanguage, newFileName,sourceFile):
     if targetLanguage == "python":
         name = newFileName + ".py"
         newTargetFile = open(name, "w")
@@ -32,12 +32,16 @@ def javascriptProcessor(file, targetLanguage, newFileName):
                         returnLine = "  return "+elementChecker[indexWord+1].replace(";","")
                         newTargetFile.write(returnLine)
                     if word.find("alert") !=-1:
-                        print("line",line)
+                        #print("line",line)
                         printLine = line.replace("alert","print")
                         finalPrint = printLine.replace(";","")
                         newTargetFile.write(finalPrint)
 
         newTargetFile.close()
+        file.close()
+
+        targetLanguage = "Python"
+        sourceLanguage = "JavaScript"
 
     elif targetLanguage == "c++":
         print("c++")
@@ -47,3 +51,5 @@ def javascriptProcessor(file, targetLanguage, newFileName):
         print("java")
     else:
         print("Target language is not available")
+
+    displayTranslationFunction(sourceFile,targetLanguage,sourceLanguage,name)

@@ -1,4 +1,6 @@
-def pythonProcessor(file, targetLanguage, newFileName):
+from displayTranslation import displayTranslationFunction
+
+def pythonProcessor(file, targetLanguage, newFileName,sourceFile):
     if targetLanguage == "javascript":
         name = newFileName + ".js"
         newTargetFile = open(name, "w")
@@ -7,14 +9,16 @@ def pythonProcessor(file, targetLanguage, newFileName):
         javascriptLine = ""
         firstFunction = bool(False)
 
+
         for line in listLines:
+            #print(line)
             elementChecker = line.split(" ")
             for word in elementChecker:
                     javascriptLine = ""
-                    print(elementChecker)
+                    #print(elementChecker)
                     #print("**",word,"**")
                     if word == "def":
-                        print(firstFunction)
+                        #print(firstFunction)
                         if firstFunction:
                             newTargetFile.write("}")
                             newTargetFile.write("\n")
@@ -38,10 +42,15 @@ def pythonProcessor(file, targetLanguage, newFileName):
                         newTargetFile.write(javascriptLine)
                         newTargetFile.write("\n")
                     if word=="\n":
-                        print("hello")
                         firstFunction = bool(True);
-                    
+
+
         newTargetFile.close()
+        file.close()
+
+        targetLanguage = "JavaScript"
+        sourceLanguage = "Python"
+
     elif targetLanguage == "c++":
         print("c++")
     elif targetLanguage == "c#":
@@ -50,3 +59,5 @@ def pythonProcessor(file, targetLanguage, newFileName):
         print("java")
     else:
         print("Target language is not available")
+
+    displayTranslationFunction(sourceFile,targetLanguage,sourceLanguage,name)

@@ -1,4 +1,4 @@
-def javaProcessor(file,targetLanguage,newFileName):
+def javaProcessor(file,targetLanguage,newFileName,sourceFile):
     if targetLanguage == "python":
         name = newFileName + ".py"
         newTargetFile = open(name, "w")
